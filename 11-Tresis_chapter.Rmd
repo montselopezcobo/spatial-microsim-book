@@ -8,6 +8,7 @@ output:
 bibliography: bibliography.bib
 ---
 
+
 ```{r echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
 library(knitr) # Needed for the kable function used in this chapter
 library(png)
