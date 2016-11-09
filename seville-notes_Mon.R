@@ -341,3 +341,125 @@ n_missing = sum(p)
 index <- sample(1:nrow(truncated), size = n_missing, prob = p, rep = F)
 truncated$COUNT[index] <- truncated$COUNT[index] + 1
 sum(truncated$COUNT)
+
+
+
+
+###################################################
+########  SimPop
+###################################################
+
+
+
+library(simPop) # loads lots of packages
+
+
+## simPop data
+
+data(eusilcS)
+dplyr::glimpse(eusilcS[1:5])
+
+# Original data has two identical variables: db090 and rb050.
+# rb050 will be updated by AddWeights
+identical(eusilcS$db090, eusilcS$rb050)
+
+## Create dataObj
+
+inp = specifyInput(data = eusilcS,
+                   hhid = "db030",
+                   hhsize = "hsize",
+                   strata = "db040",
+                   weight = "rb050")
+class(inp)
+inp
+
+
+## Input data
+
+head(eusilcS$db030)
+head(eusilcS$hsize)
+# number of people per household
+nrow(eusilcS) /
+  length(unique(eusilcS$db030))
+
+
+
+## Constraining the input data by cross-tabbed marginals
+
+data(totalsRGtab)
+totalsRGtab
+
+# where does totalsRGtab come from?
+data("totalsRG")
+tt <- xtabs(Freq~., data=totalsRG)
+# tt y similar to totalsRGtab but different class
+class(tt)
+# "xtabs" "table"
+class(totalsRGtab)
+# table"
+
+# there is a function in the package to do that, but don't know how it works
+# tt2 <- tableWt(totalsRG, weights = totalsRG$Freq, useNA = "no")
+# 
+# identical(tt2, totalsRGtab)
+
+
+rcons = colSums(totalsRGtab) / sum(totalsRGtab)
+# regional constraints in Population: sum(rcons) = 1
+
+rsurv = summary(eusilcS$db040) / nrow(eusilcS)
+# regional constraints in Survey: sum(rsurv) = 1
+
+
+
+## Differences in regional totals
+plot(rcons)
+points(rsurv, pch = 3)
+text(1:length(rsurv), y = 0.9*pmin(rsurv, rcons), labels = names(rcons))
+# The plot shows differences between survey and population totals
+
+
+## Add weights
+inp2 <- inp
+addWeights(inp2) = calibSample(inp = inp2, totals = totalsRGtab)
+
+oldweights <- inp@data$rb050
+newweights <- inp2@data$rb050
+
+plot(newweights, oldweights)
+
+
+## Create the synthetic population (like integirisation with TRS method)
+synthP = simStructure(dataS = inp2,
+                      method = "direct",
+                      basicHHvars = c("age", "rb090", "db040"))
+
+## A look at the outputs
+
+slotNames(synthP)
+nrow(synthP@pop@data)
+head(synthP@pop@data)
+rsynth = summary(synthP@pop@data$db040) /
+  nrow(synthP@pop@data)
+# The regional shares in the synthetic population are very close to population ones
+rcons - rsynth
+
+
+## Comparison with marginals (with plot)
+plot(rcons)
+points(rsynth, pch = 3)
+text(1:length(rsurv), y = pmin(rsurv, rcons), labels = names(rcons))
+
+# !!!!!!THIS PACKAGE SEEMS QUITE DIFFICULT TO IMPLEMENT, BECAUSE THE CREATION OF
+# THE PROPER INPOUTS IS NOT STRAIGHFORWARD!!!!!!!!
+
+#########################################################
+#########################################################
+
+
+#### Example with SimpleWorld files
+
+indfull <- read.csv("data/SimpleWorld/ind-full.csv")
+age <- read.csv("data/SimpleWorld/age.csv")
+sex <- read.csv("data/SimpleWorld/sex.csv")
+ind <- read.csv("data/SimpleWorld/ind.csv")

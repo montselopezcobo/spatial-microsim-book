@@ -1,0 +1,44 @@
+---
+title: "Course on Spatial microsimulation"
+author: "Montserrat López Cobo"
+date: "08/11/2016"
+output: html_document
+---
+
+Spatial microsimulation (SM) is about taking individuals, asign them to zones and model the data.
+You may have data at individual level (without location or geographical data are at more aggregated level than you need) and data from the Census about the geogtraphical areas. First you have to link them (e.g. using **social characteristicis** of the areas and the same characteristics in your sample). The oputput is what it's known as **spatial microdata**.
+
+If you already have spatial microdata, you can use the approach to validate your data, or to model data for year y+1, or to create synthetic datasets to share (without confidentiality concerns).
+
+SM makes use of social charactetistics of the population, it's about linkage of data sources which don't have a clear link. It might not worth it if you're going to use the resulting data at aggregated level.
+
+You can also use the tool for creating a synthetic dataset able to be shared without confidentiality concerns. Steps:
+1. Start from your dataset with individual level confidential data
+2. Draw a sample from it. Randomly modify some rows and columns
+3. Recalibrate the sample (using mifpf or SimPop) to resemble the constraints from the population (original dataset), ie, to get the same marginals for the constraint variables: age, sex...
+
+#### Spatial data in R, sp classes and projections
+<http://rpubs.com/RobinLovelace/217921>
+
+Reference for spatial data in R: edzer/sfr (sfr package: simple features)
+It runs faster. You can switch between sp and sfr
+
+Two kinds of spatial data:
+
+1. vector data: points, lines and polygons (in x,y coordinates)
+Advantages: It's more geospecific (can have as many points as youi want for specific areas (as city centre))
+
+2. raster data (cuadrícula): discrete, all space is represented in square cells of same size
+(finite number of rasters), provides consistent mapping of the territory (all areas are covered)
+Advantages: fast, consistent
+
+The choice depends on the type of problem you have.
+
+Geostatistics:
+<geostat-course.org/node>
+
+Careful with the coordinate reference systems. Projected CRS vs latitude-longtitude. The projected CRS format transforms de coordinates to avoid the problem of the earth beinf spheric.
+
+
+
+It's difficult to make the bridge between the spatial micdrodata built in the first stage of the method and the simulation with vector or raster data.
