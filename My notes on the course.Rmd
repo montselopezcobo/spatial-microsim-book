@@ -39,6 +39,9 @@ Geostatistics:
 
 Careful with the coordinate reference systems. Projected CRS vs latitude-longtitude. The projected CRS format transforms de coordinates to avoid the problem of the earth beinf spheric.
 
-
-
 It's difficult to make the bridge between the spatial micdrodata built in the first stage of the method and the simulation with vector or raster data.
+
+#### Agent based models and Machine learning
+
+Deep neural networks: package tensorflow (github package) (dificult but powerful)
+Random forest: package randomforest SRC (easier to use and understand)
