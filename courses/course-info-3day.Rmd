@@ -27,19 +27,19 @@ Course overview for Spatial Microsimulation course in Seville, 7^th^ - 9^th^ Nov
     - The RStudio Graphical User Interface (GUI)
     - Using R
 
-- [Creating spatial microdata in R](http://robinlovelace.net/spatial-microsim-book/slides/spatial-microdata-in-r.html) (MD 14:00 - 17:10)
+- [Creating spatial microdata in R](http://robinlovelace.net/spatial-microsim-book/slides/spatial-microdata-in-r.html) (MD 14:00 - 17:30)
     - Loading the data
     - Preparing the data 
     - Reweighting procedures
   
 ## Day 2
 
-- [Applying the methods of IPF and Combinatorial Optimisation](https://github.com/Robinlovelace/spatial-microsim-book/blob/master/slides/Applying-IPF-and-CO.Rmd) (9:30 - 11:15)
-    - Internal and External Validation (MD - 45min)
-    - Population synthesis with integerisation (MD - 45 min)
-    - Introduction to Combinatorial Optimisation (MD - 30 min)
+- [Applying the methods of IPF and Combinatorial Optimisation](https://github.com/Robinlovelace/spatial-microsim-book/blob/master/slides/Applying-IPF-and-CO.Rmd) (9:30 - 12:00)
+    - Internal and External Validation (MD)
+    - Population synthesis with integerisation (MD)
+    - Introduction to Combinatorial Optimisation (MD)
 
-- [simPop](https://github.com/Robinlovelace/spatial-microsim-book/blob/master/slides/simpop-intro.Rmd) (RL 11:30 - 13:00)
+- [simPop](https://github.com/Robinlovelace/spatial-microsim-book/blob/master/slides/simpop-intro.Rmd) (RL 12:00 - 13:00)
 
 - Spatial data with R (14:00 - 16:00)
     - [Spatial data classes](http://rpubs.com/RobinLovelace/217921) (30 min)
@@ -47,23 +47,22 @@ Course overview for Spatial Microsimulation course in Seville, 7^th^ - 9^th^ Nov
     - [Visualisation](https://github.com/Robinlovelace/Creating-maps-in-R/blob/master/vignettes/vspd-base-shiny.md) (30 min)
     - [Simple features](https://github.com/edzer/sfr) (**sf** package) (15 min if time)
 
-- [Interactive mapping](https://github.com/Robinlovelace/Creating-maps-in-R/blob/master/vignettes/vspd-base-shiny.md) with **tmap**, **leaflet** and **shiny** (if time) (RL 16:00 - 17:00)
 
-- Spatial micro-data for agent-based models (MD 17:00 - 17:30)
 
 ## Day 3
-    
-- Spatial microsimulation without micro-data (9:30 - 11:30)
-    - Methods (MD - 1h)
-    - Quality of the microsimulation (MD - 1h)
-    
-- Adding the household information (11:30 - 13:00)
-    - Depending on the databases (MD - 30 min)
-    - Several studied cases (MD - 1h00)
-    
-- Adapt the method to the aim of the simulation (14:00 - 17:00)
-    - Choice of data and methods (MD - 30 min)
-    - Application to prepared examples or their own data and aims (RL AND MD - 2h30)
 
-- Conclusion to the course (RL 17:00 - 17:30)
+
+- Related topics (MD 9:30 - 10:30)
+  - Spatial micro-data for agent-based models 
+  - Spatial microsimulation without micro-data 
+  - Adding the household information 
+  - Choice of data and methods 
+
+- Practical application (MD - 10:45 - 12:30)
+    
+- [Interactive mapping](https://github.com/Robinlovelace/Creating-maps-in-R/blob/master/vignettes/vspd-base-shiny.md) with **tmap**, **leaflet** and **shiny** (if time) (RL 12:30 - 13:00)
+
+- Apply what you've learn on your own data (14:00 - 16:45)
+
+- Conclusion to the course (16:45 - 17:00)
 
