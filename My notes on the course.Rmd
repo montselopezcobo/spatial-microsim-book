@@ -45,3 +45,11 @@ It's difficult to make the bridge between the spatial micdrodata built in the fi
 
 Deep neural networks: package tensorflow (github package) (dificult but powerful)
 Random forest: package randomforest SRC (easier to use and understand)
+
+
+Difference between spatial microdata and spatial data:
+
+- SMD is a table with info by zone
+- SD is info by zone with a geometry (coordinates), ie, with polygons representing the borders of the zones
+
+To build a bridge between tyhe two, you have to aggregate SMD and join to SD.
